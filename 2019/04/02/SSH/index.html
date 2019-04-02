@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="欧米伽代码世界">
 <meta property="og:description" content="最近做项目开始接触到SSH相关的东西，在此记录下SSH相关的内容，以作日后参考。我要实现的是：登录到远程服务器，拷贝本地文件到远程服务器，修改远程服务器的环境变量，运行sh文件，将最后的结果文件拷贝到本地。最开始本人使用了图形化工具“FileZila” ，文件的拷贝是方便，但是修改远程服务器的环境变量以及运行sh文件时遇到了问题，无奈最后还是开始学习下SSH命令进行操作。 简介什么是SSH？SSH">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-02T08:18:44.446Z">
+<meta property="og:updated_time" content="2019-04-02T08:21:02.233Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSH">
 <meta name="twitter:description" content="最近做项目开始接触到SSH相关的东西，在此记录下SSH相关的内容，以作日后参考。我要实现的是：登录到远程服务器，拷贝本地文件到远程服务器，修改远程服务器的环境变量，运行sh文件，将最后的结果文件拷贝到本地。最开始本人使用了图形化工具“FileZila” ，文件的拷贝是方便，但是修改远程服务器的环境变量以及运行sh文件时遇到了问题，无奈最后还是开始学习下SSH命令进行操作。 简介什么是SSH？SSH">
@@ -303,7 +303,7 @@
         <p>最近做项目开始接触到SSH相关的东西，在此记录下SSH相关的内容，以作日后参考。<br>我要实现的是：登录到远程服务器，拷贝本地文件到远程服务器，修改远程服务器的环境变量，运行sh文件，将最后的结果文件拷贝到本地。最开始本人使用了图形化工具“FileZila” ，文件的拷贝是方便，但是修改远程服务器的环境变量以及运行sh文件时遇到了问题，无奈最后还是开始学习下SSH命令进行操作。</p>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>什么是SSH？SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Group）所制定；SSH 为建立在应用层基础上的安全协议。SSH 是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用 SSH 协议可以有效防止远程管理过程中的信息泄露问题。SSH最初是UNIX系统上的一个程序，后来又迅速扩展到其他操作平台。SSH在正确使用时可弥补网络中的漏洞。SSH客户端适用于多种平台。几乎所有UNIX平台—包括HP-UX、Linux、AIX、Solaris、Digital UNIX、Irix，以及其他平台，都可运行SSH。<br><strong>以上的内容摘抄至百度百科，说白了，SSH是一种网络协议，用于计算机之间的加密登录。至于SSH的加密原理以及工作机制，本文不再详细说明，毕竟小白，就不再班门弄斧了，本文只讲述简单的使用，好在mac系统默认安装了SSH，我们可以直接开始。</strong>    </p>
 <h2 id="登录到远程服务器"><a href="#登录到远程服务器" class="headerlink" title="登录到远程服务器"></a>登录到远程服务器</h2><p><code>$ ssh root@192.168.1.68 -p22</code></p>
-<p><code>$ ssh username@ip -pport</code>    </p>
+<p><code>$ ssh 用户名@ip地址 -p端口</code>    </p>
 <p>如果本地用户名与远程用户名一致的话，登录时可以省略用户名。    </p>
 <p><code>$ ssh host</code>    </p>
 <p>SSH的默认端口是22，也就是说，你的登录请求会送进远程主机的22端口。使用p参数，可以修改这个端口。<br>此时我们已经成功登录到了远程服务器。    </p>
