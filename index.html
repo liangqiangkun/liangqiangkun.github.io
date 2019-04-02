@@ -306,8 +306,9 @@
           
             <p>作为一名程序员，个人觉得有一个自己的博客还是很有必要的。本文讲述如何通过Hexo+Github的方式快速搭建个人免费博客。<br>本文主要针对macOS系统，Windows除了软件安装方式和命令行有些区别，其他基本一样。    </p>
 <p>##1. 创建Github 域名和空间</p>
-<p>###1.1注册<br>首先你需要注册一个Github账号，已有的可以下翻去1.2 创建仓库，注意username，这会影响到你的域名，你的域名将会是 username.github.io ，所以认真的取个名字吧。<br><img src="/Users/liangqiangkun/Desktop/136678-a5b815963631f1bf.png" alt>注册过程可能需要验证你的邮箱，其他就不在赘述。</p>
-<p>###1.2创建仓库<br>然后需要创建一个仓库(repository) 来存储我们的网站，点击首页任意位置出现的 New repository按钮创建仓库, Respository name 中的username.github.io 的username 一定与前面的Owner 一致，记住你的username下面会用到。<br><img src="/Users/liangqiangkun/Desktop/2.png" alt><br>第一步就已经完成了，下面是安装。</p>
+<p>###1.1注册<br>首先你需要注册一个Github账号，已有的可以下翻去1.2 创建仓库，注意username，这会影响到你的域名，你的域名将会是 username.github.io ，所以认真的取个名字吧。<br>注册过程可能需要验证你的邮箱，其他就不在赘述。</p>
+<p>###1.2创建仓库<br>然后需要创建一个仓库(repository) 来存储我们的网站，点击首页任意位置出现的 New repository按钮创建仓库, Respository name 中的username.github.io 的username 一定与前面的Owner 一致，记住你的username下面会用到。</p>
+<p>第一步就已经完成了，下面是安装。</p>
 <p>##2.安装<br>Hexo 可以说是目前最流行的博客框架了，基于Nodejs，更多信息可以google，下面需要安装的工具包括 Git，Nodejs，Hexo。<br>本文不在详述这些工具的安装，请自行百度。</p>
 <p>##3.编写发布<br>接下来我们需要用Hexo初始化一个博客，然后更改一些自定义的配置，或者加上自己喜欢的主题，写上第一篇文章，然后发布到自己的个人Github网站</p>
 <p>###3.1创建博客<br>将下面的 username 替换成你自己的username(其实也无所谓，作者强迫症)，执行成功后，会创建出一个名为 username.github.io 的文件夹。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init username.github.io</span><br></pre></td></tr></table></figure></p>
