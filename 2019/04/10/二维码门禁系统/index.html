@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>SSH | 欧米伽丶小队长</title>
+  <title>二维码门禁系统 | 欧米伽丶小队长</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近做项目开始接触到SSH相关的东西，在此记录下SSH相关的内容，以作日后参考。我要实现的是：登录到远程服务器，拷贝本地文件到远程服务器，修改远程服务器的环境变量，运行sh文件，将最后的结果文件拷贝到本地。最开始本人使用了图形化工具“FileZila” ，文件的拷贝是方便，但是修改远程服务器的环境变量以及运行sh文件时遇到了问题，无奈最后还是开始学习下SSH命令进行操作。 简介什么是SSH？SSH">
-<meta name="keywords" content="SSH FTP">
+  <meta name="description" content="5G来临，人工智能成了宠儿，我们最近也在做一个智能门禁系统。先大概介绍下我们的这个智能门禁系统：大致的流程为扫描二维码—&amp;gt;解析二维码—&amp;gt;验签—&amp;gt;开锁。整个流程说起来可谓非常简单，但具体要实现起来好像并不容易。本文只做一个简单的实现的介绍，并不做原理层面的详细说明。另外，该门禁系统中同样涉及人脸识别作为辅助的鉴别方式，本文不做详细说明。 扫码设备二维码扫描器我们购买了一家硬件厂商的">
+<meta name="keywords" content="程序猿 iOS 生活">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SSH">
-<meta property="og:url" content="http://yoursite.com/2019/04/02/SSH/index.html">
+<meta property="og:title" content="二维码门禁系统">
+<meta property="og:url" content="http://yoursite.com/2019/04/10/二维码门禁系统/index.html">
 <meta property="og:site_name" content="欧米伽丶小队长">
-<meta property="og:description" content="最近做项目开始接触到SSH相关的东西，在此记录下SSH相关的内容，以作日后参考。我要实现的是：登录到远程服务器，拷贝本地文件到远程服务器，修改远程服务器的环境变量，运行sh文件，将最后的结果文件拷贝到本地。最开始本人使用了图形化工具“FileZila” ，文件的拷贝是方便，但是修改远程服务器的环境变量以及运行sh文件时遇到了问题，无奈最后还是开始学习下SSH命令进行操作。 简介什么是SSH？SSH">
+<meta property="og:description" content="5G来临，人工智能成了宠儿，我们最近也在做一个智能门禁系统。先大概介绍下我们的这个智能门禁系统：大致的流程为扫描二维码—&amp;gt;解析二维码—&amp;gt;验签—&amp;gt;开锁。整个流程说起来可谓非常简单，但具体要实现起来好像并不容易。本文只做一个简单的实现的介绍，并不做原理层面的详细说明。另外，该门禁系统中同样涉及人脸识别作为辅助的鉴别方式，本文不做详细说明。 扫码设备二维码扫描器我们购买了一家硬件厂商的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-02T08:21:02.233Z">
+<meta property="og:updated_time" content="2019-05-13T07:39:04.186Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SSH">
-<meta name="twitter:description" content="最近做项目开始接触到SSH相关的东西，在此记录下SSH相关的内容，以作日后参考。我要实现的是：登录到远程服务器，拷贝本地文件到远程服务器，修改远程服务器的环境变量，运行sh文件，将最后的结果文件拷贝到本地。最开始本人使用了图形化工具“FileZila” ，文件的拷贝是方便，但是修改远程服务器的环境变量以及运行sh文件时遇到了问题，无奈最后还是开始学习下SSH命令进行操作。 简介什么是SSH？SSH">
+<meta name="twitter:title" content="二维码门禁系统">
+<meta name="twitter:description" content="5G来临，人工智能成了宠儿，我们最近也在做一个智能门禁系统。先大概介绍下我们的这个智能门禁系统：大致的流程为扫描二维码—&amp;gt;解析二维码—&amp;gt;验签—&amp;gt;开锁。整个流程说起来可谓非常简单，但具体要实现起来好像并不容易。本文只做一个简单的实现的介绍，并不做原理层面的详细说明。另外，该门禁系统中同样涉及人脸识别作为辅助的鉴别方式，本文不做详细说明。 扫码设备二维码扫描器我们购买了一家硬件厂商的">
   
   
     <link rel="icon" href="http://litten.me/assets/img/favicon.ico">
@@ -151,49 +151,37 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-SSH" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-二维码门禁系统" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      SSH
+      二维码门禁系统
     </h1>
   
 
         
-        <a href="/2019/04/02/SSH/" class="archive-article-date">
-  	<time datetime="2019-04-02T07:01:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-02</time>
+        <a href="/2019/04/10/二维码门禁系统/" class="archive-article-date">
+  	<time datetime="2019-04-10T01:34:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近做项目开始接触到SSH相关的东西，在此记录下SSH相关的内容，以作日后参考。<br>我要实现的是：登录到远程服务器，拷贝本地文件到远程服务器，修改远程服务器的环境变量，运行sh文件，将最后的结果文件拷贝到本地。最开始本人使用了图形化工具“FileZila” ，文件的拷贝是方便，但是修改远程服务器的环境变量以及运行sh文件时遇到了问题，无奈最后还是开始学习下SSH命令进行操作。</p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>什么是SSH？SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Group）所制定；SSH 为建立在应用层基础上的安全协议。SSH 是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用 SSH 协议可以有效防止远程管理过程中的信息泄露问题。SSH最初是UNIX系统上的一个程序，后来又迅速扩展到其他操作平台。SSH在正确使用时可弥补网络中的漏洞。SSH客户端适用于多种平台。几乎所有UNIX平台—包括HP-UX、Linux、AIX、Solaris、Digital UNIX、Irix，以及其他平台，都可运行SSH。<br><strong>以上的内容摘抄至百度百科，说白了，SSH是一种网络协议，用于计算机之间的加密登录。至于SSH的加密原理以及工作机制，本文不再详细说明，毕竟小白，就不再班门弄斧了，本文只讲述简单的使用，好在mac系统默认安装了SSH，我们可以直接开始。</strong>    </p>
-<h2 id="登录到远程服务器"><a href="#登录到远程服务器" class="headerlink" title="登录到远程服务器"></a>登录到远程服务器</h2><p><code>$ ssh root@192.168.1.68 -p22</code></p>
-<p><code>$ ssh 用户名@ip地址 -p端口</code>    </p>
-<p>如果本地用户名与远程用户名一致的话，登录时可以省略用户名。    </p>
-<p><code>$ ssh host</code>    </p>
-<p>SSH的默认端口是22，也就是说，你的登录请求会送进远程主机的22端口。使用p参数，可以修改这个端口。<br>此时我们已经成功登录到了远程服务器。    </p>
-<h2 id="拷贝文件"><a href="#拷贝文件" class="headerlink" title="拷贝文件"></a>拷贝文件</h2><p>scp是secure copy的简写，用于在Linux下进行远程拷贝文件的命令，和它类似的命令有cp，不过cp只是在本机进行拷贝不能跨服务器，而且scp传输是加密的。可能会稍微影响一下速度。两台主机之间复制文件必需得同时有两台主机的复制执行帐号和操作权限。<br><strong>scp命令参数</strong>    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">-1 强制scp命令使用协议ssh1</span><br><span class="line">-2 强制scp命令使用协议ssh2</span><br><span class="line">-4 强制scp命令只使用IPv4寻址</span><br><span class="line">-6 强制scp命令只使用IPv6寻址</span><br><span class="line">-B 使用批处理模式（传输过程中不询问传输口令或短语）</span><br><span class="line">-C 允许压缩。（将-C标志传递给ssh，从而打开压缩功能）</span><br><span class="line">-p 留原文件的修改时间，访问时间和访问权限。</span><br><span class="line">-q 不显示传输进度条。</span><br><span class="line">-r 递归复制整个目录。</span><br><span class="line">-v 详细方式显示输出。scp和ssh(1)会显示出整个过程的调试信息。这些信息用于调试连接，验证和配置问题。</span><br><span class="line">-c cipher 以cipher将数据传输进行加密，这个选项将直接传递给ssh。</span><br><span class="line">-F ssh_config 指定一个替代的ssh配置文件，此参数直接传递给ssh。</span><br><span class="line">-i identity_file 从指定文件中读取传输时使用的密钥文件，此参数直接传递给ssh。</span><br><span class="line">-l limit 限定用户所能使用的带宽，以Kbit/s为单位。</span><br><span class="line">-o ssh_option 如果习惯于使用ssh_config(5)中的参数传递方式，</span><br><span class="line">-P port 注意是大写的P, port是指定数据传输用到的端口号</span><br><span class="line">-S program 指定加密传输时所使用的程序。此程序必须能够理解ssh(1)的选项。</span><br></pre></td></tr></table></figure>
-<p>scp一般有六种使用方法    </p>
-<p>本地复制远程文件：（把远程的文件复制到本地）    </p>
-<p><code>scp root@www.test.com:/val/test/test.tar.gz /val/test/test.tar.gz</code>    </p>
-<p>远程复制本地文件：（把本地的文件复制到远程主机上）    </p>
-<p><code>scp /val/test.tar.gz root@www.test.com:/val/test.tar.gz</code>   </p>
-<p>本地复制远程目录：（把远程的目录复制到本地）    </p>
-<p><code>scp -r root@www.test.com:/val/test/ /val/test/</code>    </p>
-<p>远程复制本地目录：（把本地的目录复制到远程主机上）    </p>
-<p><code>scp -r /val/test/ root@www.test.com:/val/test/</code>    </p>
-<p>本地复制远程文件到指定目录：（把远程的文件复制到本地）    </p>
-<p><code>scp root@www.test.com:/val/test/test.tar.gz /val/test/</code>    </p>
-<p>远程复制本地文件到指定目录：（把本地的文件复制到远程主机上）    </p>
-<p><code>scp /val/test.tar.gz root@www.test.com:/val/</code>    </p>
-<hr>
+        <p>5G来临，人工智能成了宠儿，我们最近也在做一个智能门禁系统。<br>先大概介绍下我们的这个智能门禁系统：大致的流程为扫描二维码—&gt;解析二维码—&gt;验签—&gt;开锁。整个流程说起来可谓非常简单，但具体要实现起来好像并不容易。本文只做一个简单的实现的介绍，并不做原理层面的详细说明。另外，该门禁系统中同样涉及人脸识别作为辅助的鉴别方式，本文不做详细说明。</p>
+<h3 id="扫码设备"><a href="#扫码设备" class="headerlink" title="扫码设备"></a>扫码设备</h3><p>二维码扫描器我们购买了一家硬件厂商的设备，结合我们的业务逻辑，他们给出了如下设计：我们不必关心二维码解析的内部逻辑，当扫描器扫描到二维码（或者NFC设备）时，会将解析的结果返回到封装好的回调函数，我们在回调函数中实现自己的业务逻辑。 他们同样封装了一些控制设备硬件的api，比如：亮灯（红/绿/蓝）、蜂鸣、传输数据到usb等。</p>
+<h3 id="MQTT协议"><a href="#MQTT协议" class="headerlink" title="MQTT协议"></a>MQTT协议</h3><p>我们采用了MQTT作用二维码设备与服务器的物联网通信协议，版本3.0+；测试的时候通过mqttbox模拟测试。    </p>
+<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><h4 id="二维码设备调试问题"><a href="#二维码设备调试问题" class="headerlink" title="二维码设备调试问题"></a>二维码设备调试问题</h4><p>二维码设备中运行的为c语言，由于二维码设备是我们采购其他厂商的，我们没办法修改内置程序，所以调试起来比较麻烦。我们能做的就是在厂商给的扫码事件回调方法中实现自己的业务逻辑，然后编译成可执行程序，推送到二维码设备。最终我们是通过串口调试工具，然后查看打印日志的方式进行的调试，比较麻烦。    </p>
+<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>为了解决这个问题，我们实现了两套代码。<br>具体解释一下：<br>二维码设备中的c程序的编译命令为：“mips-linux-gnu-gcc”。所以我们需要用mips工具链编译自己的so库，还有c程序。这套程序是运行在二维码设备中的，调试起来特别麻烦，需要编译成程序，推送进设备，然后通过串口调试工具（amaoCom）查看日志的方式调试。我们就想直接在linux系统上进行调试，所以我们直接用“gcc”命令编译so库，生成c程序，然后直接运行在linux系统上，查看日志还有vim命令单步调试都会很方便，非常遗憾的是本人至今没有学会vim的单步调试，还是通过日志的方式调试的。    </p>
+<h3 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h3><ul>
+<li>更加熟悉linux操作系统，以及linux命令，因为代码还有其他文件都是存放至远程linux服务器的。    </li>
+<li>熟悉了c语言相关的知识。所有的业务逻辑用纯c语言实现，对本人是个不小的挑战，还有so库的编译，sh文件的编写，本人都是现学现卖，哈哈，现在有了系统的了解，也都可以独立实现了。</li>
+<li>熟悉了mqtt这一物联网通信协议。    <h3 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h3></li>
+<li>只是学习了vim的常见简单命令，无法熟练使用vim命令进行单步调试之类的操作。</li>
+</ul>
 
       
 
@@ -202,17 +190,6 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">SSH FTP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -263,7 +240,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/02/SSH/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/10/二维码门禁系统/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -277,18 +254,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2019/04/10/二维码门禁系统/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/04/12/第一次有人把5G讲的如此明了/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          二维码门禁系统
+          第一次有人把5G讲的如此明了
         
       </div>
     </a>
   
   
-    <a href="/2019/04/02/NSDictionary-NSMutableDictionary扩展/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">NSDictionary+NSMutableDictionary扩展</div>
+    <a href="/2019/04/02/SSH/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SSH</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -315,7 +292,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#登录到远程服务器"><span class="toc-number">2.</span> <span class="toc-text">登录到远程服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拷贝文件"><span class="toc-number">3.</span> <span class="toc-text">拷贝文件</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#扫码设备"><span class="toc-number">1.</span> <span class="toc-text">扫码设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MQTT协议"><span class="toc-number">2.</span> <span class="toc-text">MQTT协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遇到的问题"><span class="toc-number">3.</span> <span class="toc-text">遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#二维码设备调试问题"><span class="toc-number">3.1.</span> <span class="toc-text">二维码设备调试问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解决办法"><span class="toc-number">3.2.</span> <span class="toc-text">解决办法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#收获"><span class="toc-number">4.</span> <span class="toc-text">收获</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不足"><span class="toc-number">5.</span> <span class="toc-text">不足</span></a></li></ol>
                     </div>
                 </span>
             </div>
